@@ -55,6 +55,8 @@ include("assembler.jl")
 include("boundary_integrals.jl")
 include("grid.jl")
 include("grid_generators.jl")
+include("dof_utils.jl")
+include("dof_handler.jl")
 include("VTK.jl")
 include("deprecations.jl")
 

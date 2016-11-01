@@ -31,18 +31,28 @@ end
 (::Type{Cell{dim}}){dim,N}(nodes::NTuple{N}) = Cell{dim,N}(nodes)
 
 # Typealias for commonly used cells
+# 1D
 typealias Line Cell{1, 2}
 typealias QuadraticLine Cell{1, 3}
+typealias AllLines Union{Type{Line}, Type{QuadraticLine}}
 
+# 2D
 typealias Triangle Cell{2, 3}
 typealias QuadraticTriangle Cell{2, 6}
+typealias AllTriangles Union{Type{Triangle}, Type{QuadraticTriangle}}
+
 typealias Quadrilateral Cell{2, 4}
 typealias QuadraticQuadrilateral Cell{2, 9}
+typealias AllQuadrilaterals Union{Type{Quadrilateral}, Type{QuadraticQuadrilateral}}
 
+# 3D
 typealias Tetrahedron Cell{3, 4}
 typealias QuadraticTetrahedron Cell{3, 10} # Function interpolation for this doesn't exist in JuAFEM yet
+typealias AllTetrahedrons Union{Type{Tetrahedron}, Type{QuadraticTetrahedron}}
+
 typealias Hexahedron Cell{3, 8}
 typealias QuadraticHexahedron Cell{3, 20} # Function interpolation for this doesn't exist in JuAFEM yet
+typealias AllHexahedrons Union{Type{Hexahedron}, Type{QuadraticHexahedron}}
 
 """
 A `CellIndex` is returned when looping over the cells in a grid.
