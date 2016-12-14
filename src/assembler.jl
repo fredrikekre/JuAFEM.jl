@@ -51,3 +51,12 @@ assembled values.
 function end_assemble(a::Assembler)
     return sparse(a.I, a.J, a.V)
 end
+
+"""
+    assemble!(g, ge, edof)
+
+Assembles the element residual `ge` into the global residual vector `g`.
+"""
+function assemble!{T}(g::AbstractVector{T}, ge::AbstractVector{T}, edof::AbstractVector{Int})
+    g[edof] += ge
+end
